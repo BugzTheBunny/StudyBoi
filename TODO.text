@@ -1,0 +1,24 @@
+What to add? 
+
+*add Youtube hebrew courses (From channels)
+*add config file - will also include array of functions.
+*break the searching by stages / free search  or TOP search. (Will be based on 5 star rate + views.)
+*add loging
+*delete unnecessary files.
+*add comments where needed.
+*break every message to at least 2 courses.
+*update the description and make it more clear.
+*?* Propper logo? maybe.
+*add contact.
+*Try to request more APIS. (If more APIS will be getted, will break the search by sources, 3 stages).
+
+functions:
+/ru -> will retrieve russian courses.
+/top_picked -> The courses that I suggusts.
+/top_programming -> Top programming courses (no spesicif language).
+/top_100 -> top 100 courses in udemy.
+/short - Short courses on topic.
+/medium - Medium duration courses on topic.
+/long - Long corses on topic.
+/xlong - Extra long duration courses on topic.
+/platforms - Study platforms (Udemy,Eudenix etc.)
