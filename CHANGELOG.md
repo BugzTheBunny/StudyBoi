@@ -23,3 +23,12 @@ New search, based on Udemy API, for now retrieves up to 10 results (Don't want t
 and above, and all of the courses are free.
 
 `function -> /heb => returns courses that are in hebrew language.`
+
+###`31-12-19:------update-------------`
+
+`integration with https://campus.gov.il` - YAAAY.
+
+now there are better hebrew courses.
+and looks a bit better.
+
+`function -> /heb => returns courses that are in hebrew language from https://campus.gov.il..`

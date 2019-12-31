@@ -1,7 +1,11 @@
+# Author - Slava Bugz
+# Late date updated - 31/12/2019
+
 import json
 from parameters import *
 from udemy_mod import *
 import os
+import c_e
 
 from flask import Flask
 from flask import request
@@ -10,7 +14,7 @@ from flask import Response
 from flask_sslify import SSLify
 
 bot_token = os.environ['BOT_TOKEN']
-built_in = ['/start', '/heb', '/info', '/help']
+built_in = ['/start', '/heb', '/info', '/help','/copyright']
 
 app = Flask(__name__)
 sslify = SSLify(app)
@@ -53,7 +57,6 @@ def wtj(fileName, data):
     with open(filePathNameWExt, 'w') as fp:
         json.dump(data, fp)
 
-
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
@@ -71,20 +74,40 @@ def index():
             *כל הקורסים לגמריי בחינם*
             למידע - info/
             """)
-
             return Response('Ok', status=200)
-
-        # if input == '/heb':
-        #     courses = get_heb_courses()
-        #     for c in courses:
-        #         send_message(chat_id,
-        #                      f'שם הקורס:\n {c["name"]} \n מחיר הקורס:\n {c["price"]}\n תיאור הקורס: \n{c["headline"]} \n קישור לקורס: \n {"https://www.udemy.com" + c["url"]}\n \n \n')
-        #     return Response('Ok', status=200)
+        #Hebrew courses.
+        if input == '/heb':
+             send_message(chat_id, 'וואלה כמה שניות.....מחפש ב campus.gov.il')
+             courses = c_e.fetch_course_list()
+             count = 0
+             string = ''
+             for c in courses:
+                count = count + 1
+                if c.duration == '':
+                    c.duration = "לא ידוע"
+                if c.description == '':
+                    c.description = "לא ידוע"
+                if count <= 6:
+                    course = f'שם הקורס:    {c.title}' \
+                             f'\n משך הקורס:   {c.duration}' \
+                             f'\n תיאור:   {c.description} ' \
+                             f'\n קישור:   {c.link} ' \
+                             f'\n ==================================\n '
+                    print(course)
+                    string = str(string) + str(course)
+                    if count == 6:
+                        send_message(chat_id,str(string))
+                        string = ''
+                        count = 0
+             print(string)
+             return Response('Ok', status=200)
 
         if input == '/info':
             send_message(chat_id, '''
             למה הבוט הזה קיים?
             כדי לספק לכם לימודים בחינם, בכל תחום שתרצו.
+            /copyright - זכויות יוצרים.
+            /heb - קורסים בעברית - מביא כ140 קורסים בעברית.
             חיפוש מתקדם - _adv/
             דוגמא לחיפוש מתקדם - adv_python/
             ''')
@@ -108,7 +131,11 @@ def index():
                 send_message(chat_id,
                              f'שם הקורס:\n {c["name"]} \n מחיר הקורס:\n {c["price"]}\n תיאור הקורס: \n{c["headline"]} \n קישור לקורס: \n {"https://www.udemy.com" + c["url"]}')
             return Response('Ok', status=200)
-
+        # >> Copyrights
+        if '/copyright' in input:
+            send_message(chat_id,'כל הזכויות שמורות ליוצרי הקורסים, אין לכותב הבוט שום קשר ליצירת הקורסים עצמם'
+                                 'או ליצירת הפלטפורמוט, יוצר הבוט רק מפנה את המשתמש לקורסים שאותם הוא מבקש.'
+                                 'יוצר הבוט לא מרוויח מבחינה כלכלית בשום צורה.')
         if input not in built_in:
             send_message(chat_id, f" מחפש קורסים עבור-{input}")
             courses = get_courses(input)
@@ -132,4 +159,5 @@ def main():
 if __name__ == '__main__':
     main()
     app.run(debug=True)
+
 
