@@ -11,7 +11,8 @@
 - `/start` starts the bot.
 - `/info` basic info about the bot.
 - `/help` shows the help text.
-- `/heb` retrieves hebrew courses from Udemy.
+- `/copyright` copyright info.
+- `/heb` retrieves hebrew courses from https://campus.gov.il.
 
 ### Contributing
 
