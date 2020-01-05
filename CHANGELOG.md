@@ -32,3 +32,9 @@ now there are better hebrew courses.
 and looks a bit better.
 
 `function -> /heb => returns courses that are in hebrew language from https://campus.gov.il..`
+
+###`4-01-20:------update-------------`
+
+`integration with https://campus.gov.il` - YAAAY.
+
+made a hebrew search for campus.gov.il based on the search link.
