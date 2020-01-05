@@ -28,7 +28,7 @@ def get_courses(query):
     course_list = []
     try:
         response = requests.get(
-            f'https://www.udemy.com/api-2.0/courses/?page_size=10&search={query}&price=price-free&ratings=4.2',
+            f'https://www.udemy.com/api-2.0/courses/?page_size=10&search={query}&price=price-free&ratings=4.5',
             headers=headers)
         data = response.json()
         data = data['results']
