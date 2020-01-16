@@ -64,3 +64,4 @@ websockets==8.1
 Werkzeug==0.16.0
 xlrd==1.2.0
 zope.interface==4.6.0
+gunicorn==19.7.1
