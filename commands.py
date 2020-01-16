@@ -14,8 +14,7 @@ def delete_message(chat_id, message_id):
     url = f'https://api.telegram.org/bot{bot_token}/deleteMessage'
     payload = {'chat_id': chat_id, 'message_id': message_id}
     r = requests.delete(url, json=payload)
-    print(r.url)
-    return r
+    print('MESSAGE IS DELETED')
 
 
 def parse_message(message):

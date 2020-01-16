@@ -44,7 +44,6 @@ def index():
         try:
             if type(input) is str and detect(input) == 'he':
                 hebrew = True
-
             if input == '/start':
                 send_message(chat_id, start_string)
                 return Response('Ok', status=200)
@@ -56,30 +55,31 @@ def index():
 
         if input == '/heb':
             send_message(chat_id, 'וואלה כמה שניות.....מחפש ב campus.gov.il')
-            courses = c_e.fetch_course_list()
-            amount = len(courses)
-            count = 0
-            string = ''
-            for c in courses:
-                count = count + 1
-                if c.duration == '':
-                    c.duration = "לא ידוע"
-                if c.description == '':
-                    c.description = "לא ידוע"
-                if count <= 6:
-                    course = f'שם הקורס:    {c.title}' \
-                             f'\n משך הקורס:   {c.duration}' \
-                             f'\n תיאור:   {c.description} ' \
-                             f'\n קישור:   {c.link} ' \
-                             f'\n ==================================\n '
-
-                    string = str(string) + str(course)
-                    if count == 6:
-                        send_message(chat_id,str(string))
-                        string = ''
-                        count = 0
-
-            send_message(chat_id, f'נמצאו {amount} קורסים.')
+            # courses = c_e.fetch_course_list()
+            # amount = len(courses)
+            # count = 0
+            # string = ''
+            # for c in courses:
+            #     count = count + 1
+            #     if c.duration == '':
+            #         c.duration = "לא ידוע"
+            #     if c.description == '':
+            #         c.description = "לא ידוע"
+            #     if count <= 6:
+            #         course = f'שם הקורס:    {c.title}' \
+            #                  f'\n משך הקורס:   {c.duration}' \
+            #                  f'\n תיאור:   {c.description} ' \
+            #                  f'\n קישור:   {c.link} ' \
+            #                  f'\n ==================================\n '
+            #
+            #         string = str(string) + str(course)
+            #         if count == 6:
+            #             send_message(chat_id,str(string))
+            #             string = ''
+            #             count = 0
+            #
+            # send_message(chat_id, f'נמצאו {amount} קורסים.')
+            send_message(chat_id, 'פונקציה זאת כרגע בתהליכי תיקון.')
             return Response('Ok', status=200)
 
         if input == '/info':
