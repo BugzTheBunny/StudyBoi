@@ -25,8 +25,9 @@ built_in = ['/start', '/heb', '/info', '/help', '/copyright']
 app = Flask(__name__)
 sslify = SSLify(app)
 
+BANNED_LIST = ['311100878']
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['POST','GET'])
 def index():
     if request.method == 'POST':
         hebrew = False
@@ -37,6 +38,9 @@ def index():
         chat_id = message['chat_id']
         message_id = message['message_id']
         delete_message(chat_id, message_id)
+        if chat_id in BANNED_LIST:
+            send_message(chat_id, 'לצערינו קרתה בעיה, צרו בבקשה קשר עם המפתח')
+            return Response('Ok', status=200)
         try:
             if type(input) is str and detect(input) == 'he':
                 hebrew = True
