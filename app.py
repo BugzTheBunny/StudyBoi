@@ -80,8 +80,10 @@ def index():
 
         if input == '/info':
             send_message(chat_id, info_string)
+            return Response('Ok', status=200)
         if input == '/help':
             send_message(chat_id, help_string)
+            return Response('Ok', status=200)
         if '/adv_' in input:
             input = input.replace('/adv_', '')
             print(input)
@@ -94,6 +96,7 @@ def index():
         # >> Copyrights
         if '/copyright' in input:
             send_message(chat_id,copyright_string)
+            return Response('Ok', status=200)
 
         ###################################################################################################
         # >> Campus.gov.il Search
@@ -125,6 +128,7 @@ def index():
             amount = len(courses)
             if len(courses) == 0:
                 send_message(chat_id, 'לא נמצאו קורסים בנושא זה כרגע.')
+                return Response('Ok', status=200)
             else:
                 for c in courses:
                     send_message(chat_id,
