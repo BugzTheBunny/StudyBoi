@@ -81,7 +81,9 @@ def index():
             # send_message(chat_id, f'נמצאו {amount} קורסים.')
             send_message(chat_id, 'פונקציה זאת כרגע בתהליכי תיקון. - תנסו להשתמש במילות מפתח בעברית.')
             return Response('Ok', status=200)
-
+        if input == '/contact':
+            send_message(chat_id, 'ליצירת קשר דברו עם היוצר שלי: https://www.facebook.com/SlavaBugzBunny')
+            return Response('Ok', status=200)
         if input == '/info':
             send_message(chat_id, info_string)
             return Response('Ok', status=200)
@@ -90,7 +92,6 @@ def index():
             return Response('Ok', status=200)
         if '/adv_' in input:
             input = input.replace('/adv_', '')
-            print(input)
             courses = get_best_courses(input)
             for c in courses:
                 send_message(chat_id,
