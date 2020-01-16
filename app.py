@@ -51,12 +51,12 @@ def index():
 
 
         if input == '/heb':
-             send_message(chat_id, 'וואלה כמה שניות.....מחפש ב campus.gov.il')
-             courses = c_e.fetch_course_list()
-             amount = len(courses)
-             count = 0
-             string = ''
-             for c in courses:
+            send_message(chat_id, 'וואלה כמה שניות.....מחפש ב campus.gov.il')
+            courses = c_e.fetch_course_list()
+            amount = len(courses)
+            count = 0
+            string = ''
+            for c in courses:
                 count = count + 1
                 if c.duration == '':
                     c.duration = "לא ידוע"
@@ -74,7 +74,9 @@ def index():
                         send_message(chat_id,str(string))
                         string = ''
                         count = 0
-             send_message(chat_id, f'נמצאו {amount} קורסים.')
+
+            send_message(chat_id, f'נמצאו {amount} קורסים.')
+            return Response('Ok', status=200)
 
         if input == '/info':
             send_message(chat_id, info_string)
@@ -88,6 +90,7 @@ def index():
                 send_message(chat_id,
                              f'שם הקורס:\n {c["name"]} \n מחיר הקורס:\n {c["price"]}\n תיאור הקורס: \n{c["headline"]}'
                              f' \n קישור לקורס: \n {"https://www.udemy.com" + c["url"]}')
+                return Response('Ok', status=200)
         # >> Copyrights
         if '/copyright' in input:
             send_message(chat_id,copyright_string)
@@ -113,6 +116,7 @@ def index():
                 string = str(string) + str(course)
             send_message(chat_id, f'נמצאו {amount} קורסים בנושא זה.')
             send_message(chat_id, str(string))
+            return Response('Ok', status=200)
         ##############################################################################################
         # >> Udemy Search.
         if input not in built_in and not hebrew:
@@ -127,7 +131,7 @@ def index():
                                  f'שם הקורס:\n {c["name"]} \n מחיר הקורס:\n {c["price"]}\n תיאור הקורס: \n{c["headline"]} \n'
                                  f' קישור לקורס: \n {"https://www.udemy.com" + c["url"]}')
             send_message(chat_id, f'אלו הם 10 הקורסים החינמיים הנבחרים ביותר ב{input} באתר של Udemy.')
-
+            return Response('Ok', status=200)
 
 def main():
     pass
