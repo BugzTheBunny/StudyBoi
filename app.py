@@ -32,13 +32,15 @@ def index():
         hebrew = False
         message = request.get_json()
         message = parse_message(message)
+        chat_id = message['chat_id']
         input = message['text']
+        chat_id = message['chat_id']
+        message_id = message['message_id']
+        delete_message(chat_id, message_id)
         try:
             if type(input) is str and detect(input) == 'he':
                 hebrew = True
-            chat_id = message['chat_id']
-            message_id = message['message_id']
-            delete_message(chat_id,message_id)
+
             if input == '/start':
                 send_message(chat_id, start_string)
                 return Response('Ok', status=200)
