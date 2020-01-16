@@ -20,7 +20,7 @@ from flask_sslify import SSLify
 
 
 #Built in commands.
-built_in = ['/start', '/heb', '/info', '/help', '/copyright']
+built_in = ['/start', '/heb', '/info', '/help', '/copyright', '/contact']
 
 app = Flask(__name__)
 sslify = SSLify(app)
