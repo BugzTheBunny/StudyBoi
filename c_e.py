@@ -1,15 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+from parameters import *
 
-headers = {
-    'accept': '*/*',
-    'accept-language': 'en-GB,en;q=0.9,en-US;q=0.8,hi;q=0.7,la;q=0.6',
-    'dnt': '1',
-    'referer': 'https',
-    'sec-fetch-mode': 'no-cors',
-    'sec-fetch-site': 'cross-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36',
-}
 
 class Course:
 
