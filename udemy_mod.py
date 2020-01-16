@@ -5,15 +5,31 @@
 
 import requests
 import os
-from parameters import *
 
+auth_token = os.environ['AUTH_TOKEN']
+
+headers = {
+    "Accept": "application/json, text/plain, */*",
+  	"Authorization": f"{auth_token}",
+  	"Content-Type": "application/json;charset=utf-8",
+    'accept-encoding': 'gzip, deflate, br',
+    'accept-language': 'en-GB,en;q=0.9,en-US;q=0.8,hi;q=0.7,la;q=0.6',
+    'cache-control': 'no-cache',
+    'dnt': '1',
+    'pragma': 'no-cache',
+    'referer': 'https',
+    'sec-fetch-mode': 'no-cors',
+    'sec-fetch-site': 'cross-site',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                  'Chrome/74.0.3729.169 Safari/537.36',
+}
 
 def get_courses(query):
     course_list = []
     try:
         response = requests.get(
             f'https://www.udemy.com/api-2.0/courses/?page_size=10&search={query}&price=price-free&ratings=4.2',
-            headers=udemy_headers)
+            headers=headers)
         data = response.json()
         data = data['results']
         for c in data:
@@ -50,9 +66,8 @@ def get_best_courses(query):
     course_list = []
     try:
         response = requests.get(
-            f'https://www.udemy.com/api-2.0/courses/?page_size=10&search='
-            f'{query}&price=price-free&ordering=most-reviewed',
-            headers=udemy_headers)
+            f'https://www.udemy.com/api-2.0/courses/?page_size=10&search={query}&price=price-free&ordering=most-reviewed',
+            headers=headers)
         data = response.json()
         data = data['results']
         for c in data:
