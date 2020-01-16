@@ -110,7 +110,7 @@ def index():
             amount = len(courses)
             string = ''
             #If no hebrew courses on the subject
-            if len(amount) >= 140:
+            if amount >= 140:
                 send_message(chat_id, 'לא נמצאו קורסים בנושא זה כרגע.')
                 return Response('Ok', status=200)
 
