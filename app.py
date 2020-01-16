@@ -54,7 +54,7 @@ def index():
 
 
         if input == '/heb':
-            send_message(chat_id, 'וואלה כמה שניות.....מחפש ב campus.gov.il')
+            #send_message(chat_id, 'וואלה כמה שניות.....מחפש ב campus.gov.il')
             # courses = c_e.fetch_course_list()
             # amount = len(courses)
             # count = 0
@@ -79,7 +79,7 @@ def index():
             #             count = 0
             #
             # send_message(chat_id, f'נמצאו {amount} קורסים.')
-            send_message(chat_id, 'פונקציה זאת כרגע בתהליכי תיקון.')
+            send_message(chat_id, 'פונקציה זאת כרגע בתהליכי תיקון. - תנסו להשתמש במילות מפתח בעברית.')
             return Response('Ok', status=200)
 
         if input == '/info':
@@ -109,6 +109,11 @@ def index():
             courses = c_e.fetch_course_list_by_input(input)
             amount = len(courses)
             string = ''
+            #If no hebrew courses on the subject
+            if len(amount) >= 140:
+                send_message(chat_id, 'לא נמצאו קורסים בנושא זה כרגע.')
+                return Response('Ok', status=200)
+
             for c in courses:
                 if c.duration == '':
                     c.duration = "לא ידוע"
