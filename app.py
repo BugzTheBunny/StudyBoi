@@ -68,7 +68,7 @@ def index():
                              f'\n תיאור:   {c.description} ' \
                              f'\n קישור:   {c.link} ' \
                              f'\n ==================================\n '
-                    print(course)
+
                     string = str(string) + str(course)
                     if count == 6:
                         send_message(chat_id,str(string))
