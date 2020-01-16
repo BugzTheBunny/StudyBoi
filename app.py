@@ -25,7 +25,7 @@ built_in = ['/start', '/heb', '/info', '/help', '/copyright', '/contact']
 app = Flask(__name__)
 sslify = SSLify(app)
 
-BANNED_LIST = ['311100878']
+BANNED_LIST = ['0']
 
 @app.route('/', methods=['POST','GET'])
 def index():
