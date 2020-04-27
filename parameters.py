@@ -1,6 +1,6 @@
-#Headers
 import os
 
+# Headers
 headers = {
     'accept': '*/*',
     'accept-language': 'en-GB,en;q=0.9,en-US;q=0.8,hi;q=0.7,la;q=0.6',
@@ -12,6 +12,9 @@ headers = {
 }
 
 auth_token = os.environ['AUTH_TOKEN']
+# Facebook Auth
+fb_access_token = os.environ['FB_ACCESS_TOKEN']
+fb_vefiry_token = os.environ['FB_VERIFY_TOKEN']
 
 
 udemy_headers = {
