@@ -38,10 +38,3 @@ and looks a bit better.
 `integration with https://campus.gov.il` - YAAAY.
 
 made a hebrew search for campus.gov.il based on the search link.
-
-###`20-01-20:------update-------------`
-
-`Made everything more modularl`
-
-
-`Removed Bad commadns (such as /heb)`
