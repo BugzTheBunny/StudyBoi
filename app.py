@@ -1,5 +1,4 @@
 from bot_requests import delegate_telegram_input
-from bot_requests import delegate_facebook_input
 from telegram_handling.telegram_system import parse_telegram_message
 
 # Flask
@@ -56,4 +55,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    app.run(debug=True)
+    app.run(debug=False)
