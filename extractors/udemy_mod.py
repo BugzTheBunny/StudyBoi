@@ -1,5 +1,5 @@
-#Date created - 22/12/19
-#Author - Slava Kutuzov
+# Date updated - 16/1/2020
+# Author - Slava Kutuzov
 # Udemy API Module.
 # API Overview = https://www.udemy.com/developers/affiliate/
 
@@ -24,49 +24,45 @@ headers = {
                   'Chrome/74.0.3729.169 Safari/537.36',
 }
 
-def get_courses(query):
+class Course:
+
+    def __init__(self, title, description, link, price):
+        self.title = title
+        self.description = description
+        self.link = link
+        self.price = price
+
+def udemy_get_courses_by_input(query):
+    title = ''
+    link = ''
+    description = ''
+    price = ''
     course_list = []
     try:
         response = requests.get(
-            f'https://www.udemy.com/api-2.0/courses/?page_size=10&search={query}&price=price-free&ratings=4.2',
+            f'https://www.udemy.com/api-2.0/courses/?page_size=10&search='
+            f'{query}&price=price-free&ordering=most-reviewed',
             headers=headers)
         data = response.json()
         data = data['results']
-        for c in data:
-            course_list.append({
-                'name': c['title'],
-                'url': c['url'],
-                'price': c['price'],
-                'headline':c['headline']
-            })
+        for course in data:
+            title = course['title']
+            link = course['url']
+            price = course['price']
+            description = course['headline']
+            new_course = Course(title, description, link, price)
+            course_list.append(new_course)
     except:
         return course_list
     return course_list
 
-def get_heb_courses():
-    course_list = []
-    try:
-        response = requests.get(
-            f'https://www.udemy.com/api-2.0/courses/?page_size=100&language=he',
-            headers=headers)
-        data = response.json()
-        data = data['results']
-        for c in data:
-            course_list.append({
-                'name': c['title'],
-                'url': c['url'],
-                'price': c['price'],
-                'headline':c['headline']
-            })
-    except:
-        return course_list
-    return course_list
 
-def get_best_courses(query):
+def udemy_get_best_courses(query):
     course_list = []
     try:
         response = requests.get(
-            f'https://www.udemy.com/api-2.0/courses/?page_size=10&search={query}&price=price-free&ordering=most-reviewed',
+            f'https://www.udemy.com/api-2.0/courses/?page_size=10&search={query}'
+            f'&price=price-free&ordering=most-reviewed',
             headers=headers)
         data = response.json()
         data = data['results']
