@@ -29,5 +29,3 @@ def parse_course(url):
                 pass
     except:
         print('a')
-
-parse_course('https://campus.gov.il/course/course-v1-cs-gov_cs_selfpy101/')

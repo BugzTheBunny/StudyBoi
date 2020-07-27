@@ -50,9 +50,8 @@ def format_message(request_message):
 
 
 def main():
-    pass
+    app.run(debug=False)
 
 
 if __name__ == '__main__':
     main()
-    app.run(debug=False)

@@ -1,5 +1,5 @@
 import requests
-from parameters import *
+from parameters import bot_token
 
 
 def send_message(chat_id, text):
@@ -47,4 +47,4 @@ def delete_message(chat_id, msg_id):
         payload = {'chat_id': chat_id, 'message_id': msg_id}
         r = requests.delete(url, json=payload)
     except:
-        print('Could not delete the message')
+        pass

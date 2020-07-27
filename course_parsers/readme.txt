@@ -1,1 +1,0 @@
-This package should contain the page parsers (each course that will be found, should be parsed).
